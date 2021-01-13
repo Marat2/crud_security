@@ -10,13 +10,16 @@
 <div>
     <header class="header" style="background-color: #222;height:35px;">
         <nav class="navbar navbar-toggleable-md navbar-light pt-0 pb-0 ">
-            <a class="navbar-brand p-0 mr-5" href="#" style="color: #fff;">admin@mail.ru with roles: ADMIN</a>
+            <a class="navbar-brand p-0 mr-5" href="#" style="color: #fff;">admin@mail.ru with roles:
+                <span sec:authorize="hasAuthority('ADMIN')">ADMIN</span>
+                <span sec:authorize="hasAuthority('user')">user</span>
+            </a>
             <a class="navbar-brand p-0 mr-5" href="/logout" style="color: #fff;">LOGOUT</a>
         </nav>
     </header>
     <div class="sidebar left " style="position: absolute;height: 100%;padding: 5px;background-color: #fff;">
         <ul class="list-sidebar bg-defoult" >
-            <li sec:authorize="hasRole('ADMIN')"> <a href="/admin/all" style="border-radius:3px;"><i class="fa fa-laptop"></i> <span class="nav-label">Admin</span></a> </li>
+            <li sec:authorize="hasAuthority('ADMIN')"> <a href="/admin/all" style="border-radius:3px;"><i class="fa fa-laptop"></i> <span class="nav-label">Admin</span></a> </li>
             <li > <a href="/admin/edit" style="border-radius:3px;"><i class="fa fa-laptop"></i> <span class="nav-label">User</span></a> </li>
         </ul>
     </div>
