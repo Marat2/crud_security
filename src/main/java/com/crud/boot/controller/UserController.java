@@ -44,10 +44,10 @@ public class UserController {
         model.addAttribute("user",new User());
         return "index";
     }
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addUser(){
         return "add";
-    }
+    }*/
 
     @PostMapping(path = "/save",consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
     public String saveUser(User user){
