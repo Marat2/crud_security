@@ -31,15 +31,14 @@ public class UserServiceImp implements UserService, UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-    //@Transactional
     public void add(User user) {
         userRepository.save(user);
     }
-    //@Transactional
+
     public void update(Integer id, User user) {
         userRepository.save(user);
     }
-    //@Transactional
+
     public void delete(Integer id) {
         userRepository.deleteById(id);
     }
@@ -53,7 +52,7 @@ public class UserServiceImp implements UserService, UserDetailsService {
     public Optional<User> userById(Integer id) {
         return userRepository.findById(id);
     }
-    //@Transactional
+
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
 
@@ -65,9 +64,9 @@ public class UserServiceImp implements UserService, UserDetailsService {
         return SecurityUser.fromUser(user);
     }
 
-    //@Transactional
     public User getByName(String s){
         User user = userRepository.findByUsername(s);
         return user;
     }
+
 }

@@ -22,10 +22,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@Controller
-@RequestMapping("/admin")
+//@Controller
+//@RequestMapping("/admin")
 public class UserController {
-    @Autowired
+    /*@Autowired
     UserService userService;
     RoleRepository roleRepository;
     UserRepository userRepository;
@@ -34,8 +34,8 @@ public class UserController {
     public UserController(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
     }
-
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+*/
+    /*@RequestMapping(value = "/all", method = RequestMethod.GET)
     public String getIndex(ModelMap model){
         List<User> users = userService.listUsers();
         List<Role> roles = roleRepository.findAll();
@@ -43,13 +43,13 @@ public class UserController {
         model.addAttribute("allRoles",roles);
         model.addAttribute("user",new User());
         return "index";
-    }
+    }*/
     /*@RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addUser(){
         return "add";
     }*/
 
-    @PostMapping(path = "/save",consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
+    /*@PostMapping(path = "/save",consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
     public String saveUser(User user){
         System.out.println("USER : "+user.getRoles());
         String passwd = user.getPassword();
@@ -76,6 +76,6 @@ public class UserController {
     public String deleteUser(@RequestParam Integer id){
         userService.delete(id);
         return "redirect:/admin/all";
-    }
+    }*/
 
 }
