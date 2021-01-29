@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -20,7 +21,7 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class UserTest {
 
-    @Autowired
+    /*@Autowired
     UserRestController userRestController;
     Logger log =  LoggerFactory.getLogger(UserTest.class);
     @Test
@@ -28,4 +29,9 @@ public class UserTest {
         User user = userRestController.findById(3);
         log.info("User : {}",user);
     }
+    @Test
+    void testAllUser(){
+        List<User> user = userRestController.findAll();
+        log.info("Users : {}",user);
+    }*/
 }

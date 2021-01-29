@@ -20,7 +20,7 @@ public class User implements Serializable {
     private String username;
     @Column
     private String last_name;
-    @Column
+    @Column(nullable = false)
     private String password;
     @ManyToMany(cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
     @JoinTable(name = "role_user",
