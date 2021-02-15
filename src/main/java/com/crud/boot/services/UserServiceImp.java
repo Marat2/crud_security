@@ -1,35 +1,30 @@
 package com.crud.boot.services;
 
-//import com.crud.boot.domain.Role;
 import com.crud.boot.domain.Role;
 import com.crud.boot.domain.User;
 import com.crud.boot.repository.UserRepository;
-
-//import com.crud.boot.security.SecurityUser;
 import com.crud.boot.security.SecurityUser;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.core.GrantedAuthority;
-//import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-//import org.springframework.transaction.annotation.Transactional;
-
-//import java.util.HashSet;
+import javax.transaction.Transactional;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-//import java.util.Set;
 
 @Service
 public class UserServiceImp implements UserService, UserDetailsService {
-
+    
+    private final UserRepository userRepository;
     @Autowired
-    private UserRepository userRepository;
+    public UserServiceImp(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public void add(User user) {
         userRepository.save(user);
@@ -47,12 +42,10 @@ public class UserServiceImp implements UserService, UserDetailsService {
         return userRepository.findAll();
     }
 
-
-
     public Optional<User> userById(Integer id) {
         return userRepository.findById(id);
     }
-
+    @Transactional
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
 

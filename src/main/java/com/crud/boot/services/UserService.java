@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
-    void add(User user);
-    void update(Integer id,User user);
-    void delete(Integer id);
-    List<User> listUsers();
-    Optional<User> userById(Integer id);
-    UserDetails loadUserByUsername(String s);
-    User getByName(String s);
+    public void add(User user);
+    public void update(Integer id,User user);
+    public void delete(Integer id);
+    public List<User> listUsers();
+    public Optional<User> userById(Integer id);
+    public UserDetails loadUserByUsername(String s);
+    public User getByName(String s);
 }

@@ -3,8 +3,6 @@ package com.crud.boot.domain;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -24,9 +22,6 @@ public class Role implements GrantedAuthority {
         this.id = id;
         this.name = role;
     }
-
-    @ManyToMany(mappedBy = "roles",fetch = FetchType.EAGER)
-    private List<User> user = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -54,7 +49,6 @@ public class Role implements GrantedAuthority {
         return "Role{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", user=" + user +
                 '}';
     }
 

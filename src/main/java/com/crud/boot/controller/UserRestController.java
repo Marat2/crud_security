@@ -1,7 +1,5 @@
 package com.crud.boot.controller;
 
-
-
 import com.crud.boot.domain.Role;
 import com.crud.boot.domain.User;
 import com.crud.boot.repository.RoleRepository;
@@ -13,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -23,14 +20,17 @@ import java.util.Set;
 @RequestMapping("/admin")
 public class UserRestController {
 
-   Logger logger = LoggerFactory.getLogger(getClass());
+    private final Logger logger = LoggerFactory.getLogger(getClass());
+    private final UserService userService;
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
 
     @Autowired
-    UserService userService;
-    @Autowired
-    UserRepository userRepository;
-    @Autowired
-    RoleRepository roleRepository;
+    public UserRestController(UserService userService, UserRepository userRepository, RoleRepository roleRepository) {
+        this.userService = userService;
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+    }
 
     @RequestMapping(value = { "/" }, method = RequestMethod.GET)
     public List<User> findAll() {

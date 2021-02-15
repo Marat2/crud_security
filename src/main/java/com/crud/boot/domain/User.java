@@ -13,7 +13,6 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Integer id;
-
     @Column
     private String email;
     @Column
@@ -22,16 +21,14 @@ public class User implements Serializable {
     private String last_name;
     @Column(nullable = false)
     private String password;
-    @ManyToMany(cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.ALL},fetch = FetchType.LAZY)
     @JoinTable(name = "role_user",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> roles = new HashSet<>();
 
-    public User() {
-
-    }
+    public User() {}
 
     public String getUsername() {
         return username;
